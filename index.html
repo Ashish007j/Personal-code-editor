@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online Code Editor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/monaco-editor@0.45.0/min/vs/loader.js"></script>
+</head>
+<body>
+    <!-- Header -->
+    <header class="editor-header">
+        <div class="header-left">
+            <h1 class="editor-title">Online Code Editor</h1>
+        </div>
+        <div class="header-right">
+            <select id="snippetSelector" class="snippet-selector">
+                <option value="">Select Snippet...</option>
+            </select>
+            <button id="saveBtn" class="btn btn--primary header-btn">Save</button>
+            <button id="loadBtn" class="btn btn--secondary header-btn">Load</button>
+            <button id="exportBtn" class="btn btn--outline header-btn">Export</button>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="editor-main">
+        <!-- Editor Section -->
+        <div class="editor-section" id="editorSection">
+            <!-- Tab Navigation -->
+            <div class="tab-nav">
+                <button class="tab-btn active" data-tab="html">
+                    <span class="tab-icon">📄</span>
+                    HTML
+                </button>
+                <button class="tab-btn" data-tab="css">
+                    <span class="tab-icon">🎨</span>
+                    CSS
+                </button>
+                <button class="tab-btn" data-tab="javascript">
+                    <span class="tab-icon">⚡</span>
+                    JavaScript
+                </button>
+            </div>
+            
+            <!-- Editor Panels -->
+            <div class="editor-container">
+                <div id="htmlEditor" class="editor-panel active"></div>
+                <div id="cssEditor" class="editor-panel"></div>
+                <div id="jsEditor" class="editor-panel"></div>
+            </div>
+        </div>
+
+        <!-- Resize Handle -->
+        <div class="resize-handle" id="resizeHandle"></div>
+
+        <!-- Preview Section -->
+        <div class="preview-section" id="previewSection">
+            <div class="preview-header">
+                <h3>Live Preview</h3>
+                <div class="preview-controls">
+                    <button id="refreshBtn" class="btn btn--sm btn--outline">Refresh</button>
+                    <button id="fullscreenBtn" class="btn btn--sm btn--outline">Fullscreen</button>
+                </div>
+            </div>
+            <div class="preview-container">
+                <iframe id="previewFrame" class="preview-iframe" sandbox="allow-scripts allow-same-origin"></iframe>
+            </div>
+            <div class="console-container" id="consoleContainer">
+                <div class="console-header">
+                    <span>Console</span>
+                    <button id="clearConsoleBtn" class="btn btn--sm btn--outline">Clear</button>
+                </div>
+                <div class="console-output" id="consoleOutput"></div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Save Modal -->
+    <div class="modal hidden" id="saveModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Save Snippet</h3>
+                <button class="modal-close" id="closeModal">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="snippetName" class="form-label">Snippet Name:</label>
+                    <input type="text" id="snippetName" class="form-control" placeholder="Enter snippet name...">
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="cancelSave" class="btn btn--secondary">Cancel</button>
+                <button id="confirmSave" class="btn btn--primary">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Overlay -->
+    <div class="loading-overlay" id="loadingOverlay">
+        <div class="loading-spinner">
+            <div class="spinner"></div>
+            <p>Loading Monaco Editor...</p>
+        </div>
+    </div>
+
+    <!-- Notification Toast -->
+    <div class="notification hidden" id="notification">
+        <div class="notification-content">
+            <span class="notification-message" id="notificationMessage"></span>
+            <button class="notification-close" id="closeNotification">&times;</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
