@@ -43,16 +43,12 @@ Monaco Editor
 
 LocalStorage (for snippet persistence)
 
-📸 Screenshots
-
-(Add screenshots or GIFs here once hosted/deployed)
-
 ▶️ Getting Started
 1. Clone the repository
-git clone https://github.com/your-username/online-code-editor.git
-cd online-code-editor
+2. git clone https://github.com/Ashish007j/Personal-code-editor.git
+   cd online-code-editor
 
-2. Open in browser
+3. Open in browser
 
 Simply open index.html in your browser.
 No build tools required!
